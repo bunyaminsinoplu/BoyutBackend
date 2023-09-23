@@ -16,5 +16,6 @@ namespace Components.UserComponents
         Task<RestFromBusiness> DeleteUser(Guid userID,Guid LoggedInUser);
         Task<RestFromBusiness> CreateUser(Users User, Guid LoggedInUser);
         Task<RestFromBusiness> UpdateUser(Users User, Guid LoggedInUser);
+
     }
 }

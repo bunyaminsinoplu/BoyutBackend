@@ -97,7 +97,6 @@ public partial class BoyutCaseContext : DbContext
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.MedicineId).HasColumnName("MedicineID");
             entity.Property(e => e.PurchasePrice).HasColumnType("decimal(10, 3)");
-            entity.Property(e => e.UpdatedBy).HasColumnType("datetime");
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.Medicine).WithMany(p => p.Stock)

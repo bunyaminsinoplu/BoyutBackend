@@ -21,7 +21,7 @@ public partial class Stock
 
     public DateTime UpdatedDate { get; set; }
 
-    public DateTime UpdatedBy { get; set; }
+    public Guid UpdatedBy { get; set; }
 
     public bool IsDeleted { get; set; }
 

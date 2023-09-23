@@ -1,6 +1,7 @@
 using BoyutBackend.Middleware;
 using Business.AdminBusiness;
 using Business.AuthenticationBusiness;
+using Components.ProductComponents;
 using Components.Services;
 using Components.UserComponents;
 using DataAccess.Data;
@@ -26,6 +27,7 @@ builder.Services.AddTransient<BoyutCaseContext>();
 builder.Services.AddTransient<IAuthenticationBusiness, AuthenticationBusiness>();
 builder.Services.AddTransient<IAdminBusiness, AdminBusiness>();
 builder.Services.AddTransient<IUserComponents, UserComponents>();
+builder.Services.AddTransient<IProductComponents, ProductComponents>();
 
 builder.Services.AddAuthentication(options =>
 {

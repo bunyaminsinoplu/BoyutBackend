@@ -106,6 +106,7 @@ namespace Components.UserComponents
                     existUser.Password = User.Password;
                     existUser.UpdatedDate = DateTime.Now;
                     existUser.UpdatedBy = LoggedInUser;
+                    existUser.IsDeleted = false;
                     _context.Entry(existUser).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
                     return new RestFromBusiness()
@@ -124,5 +125,6 @@ namespace Components.UserComponents
                 throw new ApplicationException(ex.Message);
             }
         }
+
     }
 }
