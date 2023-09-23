@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Models.Models;
+namespace DataAccess.Data;
 
 public partial class BoyutCaseContext : DbContext
 {
@@ -56,12 +56,13 @@ public partial class BoyutCaseContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50);
             entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+            entity.Property(e => e.UserRoleId).HasColumnName("UserRoleID");
             entity.Property(e => e.Username)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            entity.HasOne(d => d.UserRoleNavigation).WithMany(p => p.Users)
-                .HasForeignKey(d => d.UserRole)
+            entity.HasOne(d => d.UserRole).WithMany(p => p.Users)
+                .HasForeignKey(d => d.UserRoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FKUserRole_PKRole");
         });

@@ -1,9 +1,9 @@
 using BoyutBackend.Middleware;
 using Components.Services;
+using DataAccess.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Models.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);

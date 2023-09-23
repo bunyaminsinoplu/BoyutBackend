@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoyutBackend", "BoyutBackend\BoyutBackend.csproj", "{7C6FF9A9-529D-46FB-9DCF-724A6045D680}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoyutBackend", "BoyutBackend\BoyutBackend.csproj", "{7C6FF9A9-529D-46FB-9DCF-724A6045D680}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{4E09E74B-EA84-484C-98DF-E3DBA0BF7F41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Components", "Components\Components.csproj", "{FB85052F-D4BB-4BC0-B05B-44EFE58241BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Components", "Components\Components.csproj", "{FB85052F-D4BB-4BC0-B05B-44EFE58241BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{4EAEEF85-CDF7-4857-9CDB-4E911B6FB5CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{4EAEEF85-CDF7-4857-9CDB-4E911B6FB5CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{A557A8E1-E02A-4B4F-9BC6-90011888C981}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{CBB33B96-268D-45E4-9093-71D544D9BEB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +23,6 @@ Global
 		{7C6FF9A9-529D-46FB-9DCF-724A6045D680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C6FF9A9-529D-46FB-9DCF-724A6045D680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C6FF9A9-529D-46FB-9DCF-724A6045D680}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E09E74B-EA84-484C-98DF-E3DBA0BF7F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E09E74B-EA84-484C-98DF-E3DBA0BF7F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E09E74B-EA84-484C-98DF-E3DBA0BF7F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E09E74B-EA84-484C-98DF-E3DBA0BF7F41}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB85052F-D4BB-4BC0-B05B-44EFE58241BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB85052F-D4BB-4BC0-B05B-44EFE58241BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB85052F-D4BB-4BC0-B05B-44EFE58241BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +31,14 @@ Global
 		{4EAEEF85-CDF7-4857-9CDB-4E911B6FB5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EAEEF85-CDF7-4857-9CDB-4E911B6FB5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EAEEF85-CDF7-4857-9CDB-4E911B6FB5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A557A8E1-E02A-4B4F-9BC6-90011888C981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A557A8E1-E02A-4B4F-9BC6-90011888C981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A557A8E1-E02A-4B4F-9BC6-90011888C981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A557A8E1-E02A-4B4F-9BC6-90011888C981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB33B96-268D-45E4-9093-71D544D9BEB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB33B96-268D-45E4-9093-71D544D9BEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB33B96-268D-45E4-9093-71D544D9BEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB33B96-268D-45E4-9093-71D544D9BEB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

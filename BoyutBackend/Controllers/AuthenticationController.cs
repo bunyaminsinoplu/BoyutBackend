@@ -1,4 +1,7 @@
+using Business.AuthenticationBusiness;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Model;
 
 namespace BoyutBackend.Controllers
 {
@@ -6,12 +9,30 @@ namespace BoyutBackend.Controllers
     [Route("api/[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IConfiguration _config;
+        private readonly IAuthenticationBusiness _authenticationBusiness;
 
-        public AuthenticationController(IConfiguration config)
+        public AuthenticationController(IAuthenticationBusiness authenticationBusiness)
         {
-            _config = config;
+            _authenticationBusiness = authenticationBusiness;
         }
 
+        [Route("login")]
+        [HttpPost]
+        public async Task<ObjectResult> Login([FromBody] Credential credentials)
+        {
+            try
+            {
+                RestFromAuthentication rest = await _authenticationBusiness.Login(credentials);
+                return StatusCode(rest.StatusCode, new { rest.Message, rest.JWTToken });
+            }
+            catch (ApplicationException ae)
+            {
+                return StatusCode(400, ae.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
     }
 }

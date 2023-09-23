@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Models.Models;
+namespace DataAccess.Data;
 
 public partial class SysApiLogging
 {

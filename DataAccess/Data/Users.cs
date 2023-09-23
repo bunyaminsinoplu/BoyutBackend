@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Models.Models;
+namespace DataAccess.Data;
 
 public partial class Users
 {
@@ -17,7 +17,7 @@ public partial class Users
 
     public string Surname { get; set; }
 
-    public byte UserRole { get; set; }
+    public byte UserRoleId { get; set; }
 
     public DateTime CreatedDate { get; set; }
 
@@ -27,5 +27,5 @@ public partial class Users
 
     public bool IsDeleted { get; set; }
 
-    public virtual Roles UserRoleNavigation { get; set; }
+    public virtual Roles UserRole { get; set; }
 }
