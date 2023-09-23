@@ -27,11 +27,11 @@ namespace BoyutBackend.Controllers
             }
             catch (ApplicationException ae)
             {
-                return StatusCode(400, ae.Message);
+                return StatusCode(400, new { ae.Message });
             }
             catch (Exception e)
             {
-                return StatusCode(500, e.Message);
+                return StatusCode(500, new { e.Message });
             }
         }
     }

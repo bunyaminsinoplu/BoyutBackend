@@ -12,7 +12,7 @@ namespace Business.Helpers
 {
     public static class JWTHelper
     {
-        public static string GenerateJWT(string UserName, string Name, string Surname, string Password, byte RoleID, string JWTKey, string JWTIssuer)
+        public static string GenerateJWT(string UserName, string Name, string Surname, string Password, string Role, string JWTKey, string JWTIssuer)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWTKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -22,7 +22,7 @@ namespace Business.Helpers
                 new Claim("Name", Name),
                 new Claim("Surname", Surname),
                 new Claim("Password", Password),
-                new Claim("RoleID", RoleID.ToString()),
+                new Claim("Role", Role),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

@@ -19,7 +19,9 @@ namespace Components.UserComponents
 
         public async Task<Users> GetUserByUserName(string UserName)
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.Username == UserName);
+            return await _context.Users.Where(x => x.Username == UserName)
+                .Include(x => x.UserRole)
+                .FirstOrDefaultAsync(x => x.Username == UserName);
         }
     }
 }

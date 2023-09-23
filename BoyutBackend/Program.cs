@@ -1,5 +1,7 @@
 using BoyutBackend.Middleware;
+using Business.AuthenticationBusiness;
 using Components.Services;
+using Components.UserComponents;
 using DataAccess.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +22,9 @@ builder.Services.AddDbContext<BoyutCaseContext>(options =>
 });
 builder.Services.AddTransient<ApiLogService>();
 builder.Services.AddTransient<BoyutCaseContext>();
+builder.Services.AddTransient<IAuthenticationBusiness, AuthenticationBusiness>();
+builder.Services.AddTransient<IUserComponents, UserComponents>();
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

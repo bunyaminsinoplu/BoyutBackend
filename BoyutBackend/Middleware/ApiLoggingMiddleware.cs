@@ -1,4 +1,5 @@
 ﻿using Components.Services;
+using DataAccess.Data;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
@@ -124,7 +125,7 @@ namespace BoyutBackend.Middleware
                 requestBody = "";
             }
 
-            await _apiLogService.Log(new Models.Models.SysApiLogging
+            await _apiLogService.Log(new SysApiLogging
             {
                 RequestTime = requestTime,
                 ResponseMillis = responseMillis,
