@@ -35,7 +35,7 @@ namespace Business.AuthenticationBusiness
                     {
                         restFromAuthentication.StatusCode = 200;
                         restFromAuthentication.Message = "Giriş başarılı";
-                        restFromAuthentication.JWTToken = JWTHelper.GenerateJWT(user.Username, user.Name, user.Surname, user.Password, user.UserRole.RoleName, _config["Jwt:Key"], _config["Jwt:Issuer"]);
+                        restFromAuthentication.JWTToken = JWTHelper.GenerateJWT(user.Id,user.Username, user.Name, user.Surname, user.Password, user.UserRole.RoleName, _config["Jwt:Key"], _config["Jwt:Issuer"]);
                         return restFromAuthentication;
                     }
                     else
@@ -52,7 +52,6 @@ namespace Business.AuthenticationBusiness
             {
                 throw new ApplicationException("Kullanıcı adı veya şifre boş olamaz");
             }
-
         }
     }
 }

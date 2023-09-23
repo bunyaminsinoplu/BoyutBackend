@@ -20,6 +20,7 @@ namespace Components.Services
         {
             try
             {
+                apiLogItem.Id = Guid.NewGuid();
                 _db.SysApiLogging.Add(apiLogItem);
                 await _db.SaveChangesAsync();
 

@@ -12,12 +12,13 @@ namespace Business.Helpers
 {
     public static class JWTHelper
     {
-        public static string GenerateJWT(string UserName, string Name, string Surname, string Password, string Role, string JWTKey, string JWTIssuer)
+        public static string GenerateJWT(Guid UserID,string UserName, string Name, string Surname, string Password, string Role, string JWTKey, string JWTIssuer)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWTKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[] {
+                new Claim("UserID", UserID.ToString()),
                 new Claim("UserName", UserName),
                 new Claim("Name", Name),
                 new Claim("Surname", Surname),
@@ -27,7 +28,7 @@ namespace Business.Helpers
             };
 
             var token = new JwtSecurityToken(JWTIssuer,
-                JWTKey,
+                JWTIssuer,
                 claims,
                 expires: DateTime.Now.AddDays(180),
                 signingCredentials: credentials);

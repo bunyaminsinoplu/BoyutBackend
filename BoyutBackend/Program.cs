@@ -1,4 +1,5 @@
 using BoyutBackend.Middleware;
+using Business.AdminBusiness;
 using Business.AuthenticationBusiness;
 using Components.Services;
 using Components.UserComponents;
@@ -23,6 +24,7 @@ builder.Services.AddDbContext<BoyutCaseContext>(options =>
 builder.Services.AddTransient<ApiLogService>();
 builder.Services.AddTransient<BoyutCaseContext>();
 builder.Services.AddTransient<IAuthenticationBusiness, AuthenticationBusiness>();
+builder.Services.AddTransient<IAdminBusiness, AdminBusiness>();
 builder.Services.AddTransient<IUserComponents, UserComponents>();
 
 builder.Services.AddAuthentication(options =>
@@ -59,5 +61,4 @@ app.UseMiddleware<ApiLoggingMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
 app.Run();
