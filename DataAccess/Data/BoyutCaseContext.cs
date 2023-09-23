@@ -13,7 +13,15 @@ public partial class BoyutCaseContext : DbContext
     {
     }
 
+    public virtual DbSet<Medicine> Medicine { get; set; }
+
+    public virtual DbSet<Orders> Orders { get; set; }
+
+    public virtual DbSet<PriceList> PriceList { get; set; }
+
     public virtual DbSet<Roles> Roles { get; set; }
+
+    public virtual DbSet<Stock> Stock { get; set; }
 
     public virtual DbSet<SysApiLogging> SysApiLogging { get; set; }
 
@@ -21,6 +29,56 @@ public partial class BoyutCaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Medicine>(entity =>
+        {
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("ID");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.MedicineName)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.UniqueCode)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<Orders>(entity =>
+        {
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("ID");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.OrderNo)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.PriceListId).HasColumnName("PriceListID");
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FKOrders_PKUsers");
+        });
+
+        modelBuilder.Entity<PriceList>(entity =>
+        {
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("ID");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.MedicineId).HasColumnName("MedicineID");
+            entity.Property(e => e.Price).HasColumnType("decimal(10, 3)");
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+            entity.HasOne(d => d.Medicine).WithMany(p => p.PriceList)
+                .HasForeignKey(d => d.MedicineId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FKPriceList_PKMedicine");
+        });
+
         modelBuilder.Entity<Roles>(entity =>
         {
             entity.HasKey(e => e.RoleId);
@@ -29,6 +87,23 @@ public partial class BoyutCaseContext : DbContext
                 .ValueGeneratedOnAdd()
                 .HasColumnName("RoleID");
             entity.Property(e => e.RoleName).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Stock>(entity =>
+        {
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("ID");
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.MedicineId).HasColumnName("MedicineID");
+            entity.Property(e => e.PurchasePrice).HasColumnType("decimal(10, 3)");
+            entity.Property(e => e.UpdatedBy).HasColumnType("datetime");
+            entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+            entity.HasOne(d => d.Medicine).WithMany(p => p.Stock)
+                .HasForeignKey(d => d.MedicineId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FKStock_PKMedicine");
         });
 
         modelBuilder.Entity<SysApiLogging>(entity =>

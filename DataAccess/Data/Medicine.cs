@@ -5,19 +5,13 @@ using System.Collections.Generic;
 
 namespace DataAccess.Data;
 
-public partial class Users
+public partial class Medicine
 {
     public Guid Id { get; set; }
 
-    public string Username { get; set; }
+    public string MedicineName { get; set; }
 
-    public string Password { get; set; }
-
-    public string Name { get; set; }
-
-    public string Surname { get; set; }
-
-    public byte UserRoleId { get; set; }
+    public string UniqueCode { get; set; }
 
     public DateTime CreatedDate { get; set; }
 
@@ -27,7 +21,7 @@ public partial class Users
 
     public bool IsDeleted { get; set; }
 
-    public virtual ICollection<Orders> Orders { get; set; } = new List<Orders>();
+    public virtual ICollection<PriceList> PriceList { get; set; } = new List<PriceList>();
 
-    public virtual Roles UserRole { get; set; }
+    public virtual ICollection<Stock> Stock { get; set; } = new List<Stock>();
 }
